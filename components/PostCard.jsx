@@ -1,22 +1,20 @@
 import React from 'react'
+import moment from 'moment'
 import Image from 'next/image'
 import Link from 'next/link'
 const PostCard = ({ post }) => {
+  console.log({ post })
   return (
     <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
-      {/*<Link href="#">
-        <Image
-          className="rounded-t-lg"
-          src=""
-          alt={post.title}
-        />
-      </Link> */}
+      <img
+        src={post.featuredImage.url}
+        alt={post.title}
+        className="rounded-t-lg"
+      />
       <div className="p-5">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {post.title}
-          </h5>
-        </a>
+        <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 transition duration-700 hover:text-blue-600 dark:text-white">
+          <Link href={`/post/${post.slug}`}>{post.title}</Link>
+        </h1>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {post.excerpts}
         </p>
