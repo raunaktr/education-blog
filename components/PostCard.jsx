@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const PostCard = ({ post }) => {
   return (
-    <div className="card-bordered card card-compact w-72 lg:card-normal">
+    <div className="card-bordered card card-compact w-72 lg:card-normal mb-4">
       <figure>
         <img src={post.featuredImage.url} alt={post.title} />
         <div className="flex">
@@ -56,23 +56,21 @@ const PostCard = ({ post }) => {
           </button>
         </div>
 
-          {post.authors.map((author) => (
-            <div key={author.id} className="mt-2 flex-grow place-items-end">
-              <div className="flex items-start justify-end lg:mb-0 lg:w-auto">
-                <img
-                  src={author.photo.url}
-                  alt={author.name}
-                  className="align-middle"
-                  height="30px"
-                  width="30px"
-                />
+        {post.authors.map((author) => (
+          <div key={author.id} className="mt-2 flex-grow place-items-end">
+            <div className="flex items-start justify-end lg:mb-0 lg:w-auto">
+              <img
+                src={author.photo.url}
+                alt={author.name}
+                className="align-middle"
+                height="30px"
+                width="30px"
+              />
 
-                <p className="mx-2 link text-lg font-bold">
-                  {author.name}
-                </p>
-              </div>
+              <p className="link mx-2 text-lg font-bold">{author.name}</p>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </div>
   )
