@@ -60,3 +60,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.group:focus .group-focus\:visible {
+	display: block;
+}

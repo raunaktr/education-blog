@@ -2,40 +2,77 @@ import React from 'react'
 import moment from 'moment'
 import Image from 'next/image'
 import Link from 'next/link'
+
 const PostCard = ({ post }) => {
-  console.log({ post })
   return (
-    <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
-      <img
-        src={post.featuredImage.url}
-        alt={post.title}
-        className="rounded-t-lg"
-      />
-      <div className="p-5">
-        <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 transition duration-700 hover:text-blue-600 dark:text-white">
+    <div className="card-bordered card card-compact w-72 lg:card-normal">
+      <figure>
+        <img src={post.featuredImage.url} alt={post.title} />
+        <div className="flex">
+          <div className="card flex-grow place-items-end">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="mr-2 inline h-6 w-6 text-secondary"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <span className="mx-2">
+            {moment(post.createdAt).format('MMM DD, YYYY')}
+          </span>
+        </div>
+      </figure>
+      <div className="card-body">
+        <h1 className="card-title mb-2 text-xl font-bold tracking-tight text-gray-900 transition duration-700 hover:text-blue-600 dark:text-white">
           <Link href={`/post/${post.slug}`}>{post.title}</Link>
         </h1>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {post.excerpts}
+        <p className="font-normal text-gray-600 dark:text-gray-400">
+          {post.excerpt.substring(0, 100)}...
         </p>
-        <a
-          href="#"
-          className="inline-flex items-center rounded-lg bg-blue-700 py-2 px-3 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="ml-2 -mr-1 h-4 w-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </a>
+        <div className="card-actions">
+          <button className="btn btn-ghost">
+            Read More
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="ml-2 inline-block h-6 w-6 stroke-current"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+          {post.authors.map((author) => (
+            <div key={author.id} className="mt-2 flex-grow place-items-end">
+              <div className="flex items-start justify-end lg:mb-0 lg:w-auto">
+                <img
+                  src={author.photo.url}
+                  alt={author.name}
+                  className="align-middle"
+                  height="30px"
+                  width="30px"
+                />
+
+                <p className="mx-2 link text-lg font-bold">
+                  {author.name}
+                </p>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   )
