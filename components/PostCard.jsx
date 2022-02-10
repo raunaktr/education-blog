@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const PostCard = ({ post }) => {
   return (
-    <div className="card-bordered card card-compact w-72 lg:card-normal mb-4">
+    <div className="h-100 card-bordered card card-compact mb-4 lg:card-normal">
       <figure>
         <img src={post.featuredImage.url} alt={post.title} />
         <div className="flex">
@@ -37,7 +37,7 @@ const PostCard = ({ post }) => {
         <p className="font-normal text-gray-600 dark:text-gray-400">
           {post.excerpt.substring(0, 100)}...
         </p>
-        <div className="card-actions">
+        <div className="card-actions mt-4">
           <button className="btn btn-ghost">
             Read More
             <svg
