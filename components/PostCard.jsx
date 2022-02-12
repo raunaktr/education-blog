@@ -62,23 +62,20 @@ const PostCard = ({ post }) => {
             </svg>
           </button>
         </div>
-
-        {post.authors.map((author) => (
-          <div key={author.id} className="mt-2 flex-grow items-end">
-            <div className="flex items-center justify-start lg:mb-0 lg:w-auto">
-              <img
-                src={author.photo.url}
-                alt={author.name}
-                className="mask mask-squircle align-middle"
-                height="30px"
-                width="30px"
-              />
-              <p className="link-hover link-secondary link mx-2 hover:text-primary-content">
-                {author.name}
-              </p>
-            </div>
+        <div key={post.authors[0].id} className="mt-2 flex-grow items-end">
+          <div className="flex items-center justify-start lg:mb-0 lg:w-auto">
+            <img
+              src={post.authors[0].photo.url}
+              alt={post.authors[0].name}
+              className="mask mask-squircle align-middle"
+              height="30px"
+              width="30px"
+            />
+            <p className="link-hover link-secondary link mx-2 hover:text-primary-content">
+              {post.authors[0].name}
+            </p>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  console.log(posts)
+  // console.log(posts)
   return (
     // <div className="mt-4 w-full rounded bg-gradient-to-r from-blue-400/10 via-indigo-500/10 to-green-500/10 p-6">
     // <div className="mt-4 p-6">
